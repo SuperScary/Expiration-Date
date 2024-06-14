@@ -10,7 +10,8 @@ import superscary.expirationdate.ExpirationDate;
 import superscary.expirationdate.helpers.TimeConverter;
 import superscary.expirationdate.timer.ExpirationRegistry;
 
-@EventBusSubscriber(modid = ExpirationDate.MOD_ID)
+@EventBusSubscriber(modid = ExpirationDate.MODID)
+@SuppressWarnings("unused")
 public class ClientEvents {
 
     private static int ticks = 0;
@@ -21,7 +22,7 @@ public class ClientEvents {
             return;
         }
 
-        float time = 0;
+        float time;
         if (!ExpirationRegistry.isFoodExpired(event.getItemStack())) {
             time = ExpirationRegistry.getTime(event.getItemStack());
             event.getToolTip().add(TimeConverter.tickToTime(time));
@@ -32,9 +33,9 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void clientTick (ClientTickEvent.Pre event) {
+        if (Minecraft.getInstance().player == null) return;
         ticks++;
         if (ticks % 20 == 0) {
-            assert Minecraft.getInstance().player != null;
             if (!Minecraft.getInstance().player.isCreative()) {
                 ExpirationRegistry.updateTick(Minecraft.getInstance().player);
             }

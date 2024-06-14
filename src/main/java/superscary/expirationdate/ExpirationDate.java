@@ -5,10 +5,10 @@ import net.neoforged.fml.common.Mod;
 
 import superscary.expirationdate.reg.ModCodecRegistry;
 
-@Mod(ExpirationDate.MOD_ID)
+@Mod(ExpirationDate.MODID)
 public final class ExpirationDate {
 
-    public static final String MOD_ID = "expirationdate";
+    public static final String MODID = "expirationdate";
 
     public ExpirationDate (IEventBus modEventBus) {
         ModCodecRegistry.REGISTRY.register(modEventBus);
