@@ -1,0 +1,4 @@
+{
+  "chat.expirationdate.expired": "Expired",
+  "chat.expirationdate.time_remaining": "Expires in: %sd, %sh, %sm, %ss"
+}
